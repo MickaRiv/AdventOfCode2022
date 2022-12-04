@@ -9,4 +9,4 @@ print(f"Number of complete overlaps found: {np.sum(complete_overlaps)}")
 
 partial_overlaps = np.diff(bounds,axis=-1)[:,:,0].sum(axis=1) >= bounds.max(axis=(1,2))-bounds.min(axis=(1,2))
 
-print(f"Number of complete overlaps found: {np.sum(partial_overlaps)}")
+print(f"Number of partial overlaps found: {np.sum(partial_overlaps)}")
