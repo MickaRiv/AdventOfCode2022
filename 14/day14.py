@@ -1,4 +1,5 @@
 import numpy as np
+from matplotlib import pyplot as plt
 
 up, down, left, right = (-1,0), (1,0), (0,-1), (0,1)
 
@@ -41,7 +42,8 @@ save_scan = scan.copy()
 
 roll_back = {}
 count = get_count(scan,((500,0)-mini)[::-1],roll_back_optim=True)
-    
+plt.matshow(scan)
+plt.show()
 print(f"The number of units of sand at rest is {count-1}")
 
 full_scan = np.zeros((scan.shape[0]+2,2*(scan.shape[0]+2))).astype(int)
@@ -51,5 +53,6 @@ full_scan[-1] = -1
 
 roll_back = {}
 count = get_count(full_scan,(0,full_scan.shape[0]),roll_back_optim=True)
-    
+plt.matshow(full_scan)
+plt.show()
 print(f"The number of units of sand at rest is now {count}")
