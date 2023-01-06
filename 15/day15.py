@@ -17,8 +17,9 @@ beacon_on_row = set([x for x,y in data[:,1] if y==row])
 
 print(f"Exactly {len(clear_cols.difference(beacon_on_row))} positions cannot contain a beacon")
 
+comb = [lambda i,N: (i,N-i), lambda i,N: (-N+i,i), lambda i,N: (-i,-N+i), lambda i,N: (N-i,-i)]
 def circle_points(center,N):
-    return center + np.concatenate([((i,N-i),(-N+i,i),(-i,-N+i),(N-i,-i)) for i in range(N)])
+    return center + np.array([c(i,N) for c in comb for i in range(N)])
 
 from scipy.spatial.distance import cdist
 
